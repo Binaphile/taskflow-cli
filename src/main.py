@@ -26,19 +26,15 @@ while True:
 
     if task_name == "2":
         print("Exit")
-
         break
-    if task_name != "1":
-       
-            print("invalid option")
-            break
-        
-    task_name = input("Choose an Action Again: ")
 
+    elif task_name == "1":
+            chosen_task = input("What task?: ")
+            print(f"Task Added: {chosen_task}")    
 
-    chosen_task = input("What task?: ")
+    else:
+        print("invalid option")
 
-    print(f"Task Added Successfully: {chosen_task}")
     print()
 
     print("1. Add Task")
