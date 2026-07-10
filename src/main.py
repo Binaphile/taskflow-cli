@@ -4,22 +4,37 @@ print("=================")
 
 print()
 
+def greet_user(name):
+    print(f"Hello {name}")
+
+def add_the_task(task):
+    print(f"Task Added: {task}")
+
+def add_the_list(task_list, task):
+    task_list.append(task)
+
+def view_the_task(index, viewTask):
+    print(f"{index}. {viewTask}")
+
+def menu():
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Exit")
+
 user_name = input("Enter your name: ")
 
 print()
 
-print(f"Hello {user_name}")
-
+greet_user(user_name)
 
 print()
 
-print("1. Add Task")
-print("2. View Tasks")
-print("3. Exit")
+menu()
 
 print()
 
 tasks = []
+
 
 while True:
     choice = input("Choose an Action: ")
@@ -35,9 +50,9 @@ while True:
 
         print()
 
-        print(f"Task Added: {chosen_task}")
-        tasks.append(chosen_task)
-
+        add_the_task(chosen_task)
+        add_the_list(tasks, chosen_task)
+        
     elif choice == "2":
          print("My Tasks")
 
@@ -46,17 +61,14 @@ while True:
          print()
 
          for index, task in enumerate(tasks, start=1):
-            print(f"{index}. {task}")
+            view_the_task(index, task)
 
     else:
         print("invalid option")
 
-
     print()
 
-    print("1. Add Task")
-    print("2. View Tasks")
-    print("3. Exit")
+    menu()
 
 
 

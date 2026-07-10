@@ -1,26 +1,4 @@
-tasks = []
+def introduce(name, age, sex):
+    print(f"Hello I am {name}, I am {age}, and a {sex}")
 
-tasks.append("Eat")
-tasks.append("Code")
-tasks.append("Sleep")
-
-print("My Tasks")
-
-for index, task in enumerate(tasks, start=1):
-    print(f"{index}. {task}")
-
-# tasks = [
-
-# ]
-
-# chosenTask = input("Task1: ")
-# tasks.append(chosenTask)
-
-# chosenTask = input("Task2: ")
-# tasks.append(chosenTask)
-
-# chosenTask = input("Task3: ")
-# tasks.append(chosenTask)
-
-# print(tasks)
-# print(len(tasks))
+introduce("Harvey", 22, "male")
