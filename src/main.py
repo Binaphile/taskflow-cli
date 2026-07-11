@@ -13,9 +13,8 @@ def add_the_task(task):
 def add_the_list(task_list, task):
     task_list.append(task)
 
-def view_the_task(index, viewTask):
-    print(f"{index}. {viewTask}")
-
+def view_the_task(index, task):
+    print(f"{index}. {task['Name']} - {task['Status']}")
 def menu():
     print("1. Add Task")
     print("2. View Tasks")
@@ -36,6 +35,7 @@ print()
 tasks = []
 
 
+
 while True:
     choice = input("Choose an Action: ")
 
@@ -46,12 +46,18 @@ while True:
         break
 
     elif choice == "1":
+
         chosen_task = input("What task?: ")
+
+        task = {
+            "Name": chosen_task,
+            "Status": "Pending"
+        }
 
         print()
 
         add_the_task(chosen_task)
-        add_the_list(tasks, chosen_task)
+        add_the_list(tasks, task)
         
     elif choice == "2":
          print("My Tasks")
