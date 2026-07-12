@@ -4,6 +4,8 @@ print("=================")
 
 print()
 
+# Functions
+
 def greet_user(name):
     print(f"Hello {name}")
 
@@ -15,10 +17,13 @@ def add_the_list(task_list, task):
 
 def view_the_task(index, task):
     print(f"{index}. {task['Name']} - {task['Status']}")
+    
 def menu():
     print("1. Add Task")
     print("2. View Tasks")
     print("3. Exit")
+
+#---------------
 
 user_name = input("Enter your name: ")
 
@@ -56,9 +61,6 @@ while True:
 
         print()
 
-        add_the_task(chosen_task)
-        add_the_list(tasks, task)
-        
     elif choice == "2":
          print("My Tasks")
 
