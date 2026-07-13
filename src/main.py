@@ -21,7 +21,7 @@ def view_the_task(index, task):
 def menu():
     print("1. Add Task")
     print("2. View Tasks")
-    print("3. Exit")
+    print("3. Update Status")
 
 #---------------
 
@@ -47,8 +47,28 @@ while True:
     print()
 
     if choice == "3":
-        print("Exit")
-        break
+        print("My Tasks")
+
+        if not tasks:
+            print("No Task Added Yet")
+            print()
+            continue
+
+        for index, task in enumerate(tasks, start=1):
+            view_the_task(index, task)
+
+        print()
+
+        task_number = int(input("Which Task is Done?: "))
+
+        selected_task = tasks[task_number - 1]
+
+        selected_task["Status"] = "Done"
+
+        print("\nUpdated Tasks:\n")
+
+        for index, task in enumerate(tasks, start=1):
+            view_the_task(index, task)
 
     elif choice == "1":
 
@@ -59,6 +79,11 @@ while True:
             "Status": "Pending"
         }
 
+        print()
+
+        add_the_task(chosen_task)
+        add_the_list(tasks, task)
+        
         print()
 
     elif choice == "2":
