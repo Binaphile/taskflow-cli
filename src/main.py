@@ -1,66 +1,111 @@
 print("=================")
 print("  TASKFLOW CLI")
-print("=================")
+print("=================\n")
 
-print()
 
-# Functions
+# ---------------- Functions ----------------
 
 def greet_user(name):
     print(f"Hello {name}")
 
-def add_the_task(task):
-    print(f"Task Added: {task}")
 
-def add_the_list(task_list, task):
-    task_list.append(task)
-
-def view_the_task(index, task):
-    print(f"{index}. {task['Name']} - {task['Status']}")
-    
 def menu():
     print("1. Add Task")
     print("2. View Tasks")
     print("3. Update Status")
-    print("4. Delete Tasks")
+    print("4. Delete Task")
+    print("5. Exit")
 
-#---------------
+
+def create_task(name):
+    return {
+        "Name": name,
+        "Status": "Pending"
+    }
+
+
+def add_task(task_list, task):
+    task_list.append(task)
+    print(f"Task Added: {task['Name']}")
+
+
+def display_task(index, task):
+    print(f"{index}. {task['Name']} - {task['Status']}")
+
+
+def display_tasks(task_list):
+    print("My Tasks")
+
+    if not task_list:
+        print("No Task Added Yet")
+        return False
+
+    print()
+
+    for index, task in enumerate(task_list, start=1):
+        display_task(index, task)
+
+    return True
+
+
+# ---------------- Main Program ----------------
 
 user_name = input("Enter your name: ")
-
 print()
 
 greet_user(user_name)
 
-print()
-
-menu()
-
-print()
-
 tasks = []
 
-
-
 while True:
+    print()
+    menu()
+    print()
+
     choice = input("Choose an Action: ")
 
     print()
 
-    if choice == "4":
-        print("My Tasks")
+    # Add Task
+    if choice == "1":
 
-        if not tasks:
-            print("No Task Added Yet")
-            print()
+        task_name = input("What task?: ")
+
+        task = create_task(task_name)
+
+        add_task(tasks, task)
+
+    # View Tasks
+    elif choice == "2":
+
+        display_tasks(tasks)
+
+    # Update Status
+    elif choice == "3":
+
+        if not display_tasks(tasks):
             continue
-
-        for index, task in enumerate(tasks, start=1):
-            view_the_task(index, task)
 
         print()
 
-        task_number = int(input("Which Task do you want to delete?: "))
+        task_number = int(input("Which task is done?: "))
+
+        selected_task = tasks[task_number - 1]
+        selected_task["Status"] = "Done"
+
+        print("\nUpdated Tasks:\n")
+
+        display_tasks(tasks)
+
+    # Delete Task
+    elif choice == "4":
+
+        if not display_tasks(tasks):
+            continue
+
+        print()
+
+        task_number = int(input("Which task do you want to delete?: "))
 
         deleted_task = tasks.pop(task_number - 1)
 
@@ -68,83 +113,12 @@ while True:
 
         print("\nUpdated Tasks:\n")
 
-        for index, task in enumerate(tasks, start=1):
-            view_the_task(index, task)
+        display_tasks(tasks)
 
-        print()
-
-    elif choice == "3":
-        print("My Tasks")
-
-        if not tasks:
-            print("No Task Added Yet")
-            print()
-            continue
-
-        for index, task in enumerate(tasks, start=1):
-            view_the_task(index, task)
-
-        print()
-
-        task_number = int(input("Which Task is Done?: "))
-
-        selected_task = tasks[task_number - 1]
-
-        selected_task["Status"] = "Done"
-
-        print("\nUpdated Tasks:\n")
-
-        for index, task in enumerate(tasks, start=1):
-            view_the_task(index, task)
-
-    elif choice == "1":
-
-        chosen_task = input("What task?: ")
-
-        task = {
-            "Name": chosen_task,
-            "Status": "Pending"
-        }
-
-        print()
-
-        add_the_task(chosen_task)
-        add_the_list(tasks, task)
-        
-        print()
-
-    elif choice == "2":
-         print("My Tasks")
-
-         if not tasks:
-            print("No Task Added Yet")
-         print()
-
-         for index, task in enumerate(tasks, start=1):
-            view_the_task(index, task)
+    # Exit
+    elif choice == "5":
+        print("Goodbye!")
+        break
 
     else:
-        print("invalid option")
-
-    print()
-
-    menu()
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+        print("Invalid option.")
