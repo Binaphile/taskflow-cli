@@ -22,6 +22,7 @@ def menu():
     print("1. Add Task")
     print("2. View Tasks")
     print("3. Update Status")
+    print("4. Delete Tasks")
 
 #---------------
 
@@ -46,7 +47,33 @@ while True:
 
     print()
 
-    if choice == "3":
+    if choice == "4":
+        print("My Tasks")
+
+        if not tasks:
+            print("No Task Added Yet")
+            print()
+            continue
+
+        for index, task in enumerate(tasks, start=1):
+            view_the_task(index, task)
+
+        print()
+
+        task_number = int(input("Which Task do you want to delete?: "))
+
+        deleted_task = tasks.pop(task_number - 1)
+
+        print(f"\nDeleted Task: {deleted_task['Name']}")
+
+        print("\nUpdated Tasks:\n")
+
+        for index, task in enumerate(tasks, start=1):
+            view_the_task(index, task)
+
+        print()
+
+    elif choice == "3":
         print("My Tasks")
 
         if not tasks:

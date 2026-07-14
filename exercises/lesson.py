@@ -24,7 +24,6 @@ removedValue = 320
 
 print(removedValue)
 
-
 print(book)
 
 
