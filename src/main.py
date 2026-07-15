@@ -45,6 +45,8 @@ def display_tasks(task_list):
     for index, task in enumerate(task_list, start=1):
         display_task(index, task)
 
+    print(f"\nTotal Tasks: {len(task_list)}")
+
     return True
 
 
