@@ -50,6 +50,15 @@ def display_tasks(task_list):
     return True
 
 
+def task_exists(task_list, task_name):
+
+    for task in task_list:
+        if task["Name"].lower() == task_name.lower():
+            return True
+        
+    return False
+
+
 # ---------------- Main Program ----------------
 
 user_name = input("Enter your name: ")
@@ -76,6 +85,14 @@ while True:
         task = create_task(task_name)
 
         add_task(tasks, task)
+
+        if task_exists(tasks, task_name):
+            print("Task already exists.")
+
+        else:
+            task = create_task(task_name)
+            add_task(tasks, task)    
+     
 
     # View Tasks
     elif choice == "2":
@@ -115,7 +132,7 @@ while True:
 
         print("\nUpdated Tasks:\n")
 
-        display_tasks(tasks)
+        display_tasks(tasks)       
 
     # Exit
     elif choice == "5":
@@ -124,3 +141,8 @@ while True:
 
     else:
         print("Invalid option.")
+
+    
+
+
+    
