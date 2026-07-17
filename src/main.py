@@ -14,7 +14,8 @@ def menu():
     print("2. View Tasks")
     print("3. Update Status")
     print("4. Delete Task")
-    print("5. Exit")
+    print("5. Task Statistics")
+    print("6. Exit")
 
 
 def create_task(name):
@@ -59,6 +60,30 @@ def task_exists(task_list, task_name):
     return False
 
 
+def display_statistics(task_list):
+
+    if not task_list:
+        print("No Task Added Yet")
+        return
+
+    total_tasks = len(task_list)
+    completed_tasks = 0
+    pending_tasks = 0
+
+    for task in task_list:
+
+        if task["Status"] == "Done":
+            completed_tasks += 1
+        else:
+            pending_tasks += 1
+
+    print("Task Statistics")
+    print("----------------")
+    print(f"Total Tasks     : {total_tasks}")
+    print(f"Completed Tasks : {completed_tasks}")
+    print(f"Pending Tasks   : {pending_tasks}")
+
+
 # ---------------- Main Program ----------------
 
 user_name = input("Enter your name: ")
@@ -82,16 +107,12 @@ while True:
 
         task_name = input("What task?: ")
 
-        task = create_task(task_name)
-
-        add_task(tasks, task)
-
         if task_exists(tasks, task_name):
             print("Task already exists.")
 
         else:
             task = create_task(task_name)
-            add_task(tasks, task)    
+            add_task(tasks, task)  
      
 
     # View Tasks
@@ -134,13 +155,16 @@ while True:
 
         display_tasks(tasks)       
 
-    # Exit
+    # Task Statistics and Exit
     elif choice == "5":
+
+        display_statistics(tasks)
+
+    # Exit
+    elif choice == "6":
+
         print("Goodbye!")
         break
-
-    else:
-        print("Invalid option.")
 
     
 
