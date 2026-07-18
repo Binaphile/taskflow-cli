@@ -134,11 +134,23 @@ while True:
         task_number = int(input("Which task is done?: "))
 
         selected_task = tasks[task_number - 1]
-        selected_task["Status"] = "Done"
 
-        print("\nUpdated Tasks:\n")
+        print("\nChoose Status")
+        print("1. Done")
+        print("2. Pending")
+        print()
 
-        display_tasks(tasks)
+        status_choice = input("Select Status: ")
+
+        if status_choice == "1":
+            selected_task["Status"] = "Done"
+
+        elif status_choice == "2":
+            selected_task["Status"] = "Pending"
+
+        else:
+            print("Invalid status.")
+            continue
 
     # Delete Task
     elif choice == "4":
