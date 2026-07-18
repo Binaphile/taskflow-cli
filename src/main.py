@@ -77,11 +77,14 @@ def display_statistics(task_list):
         else:
             pending_tasks += 1
 
+    completion_rate = (completed_tasks / total_tasks) * 100
+
     print("Task Statistics")
     print("----------------")
-    print(f"Total Tasks     : {total_tasks}")
-    print(f"Completed Tasks : {completed_tasks}")
-    print(f"Pending Tasks   : {pending_tasks}")
+    print(f"Total Tasks      : {total_tasks}")
+    print(f"Completed Tasks  : {completed_tasks}")
+    print(f"Pending Tasks    : {pending_tasks}")
+    print(f"Completion Rate  : {completion_rate:.1f}%")
 
 
 # ---------------- Main Program ----------------
