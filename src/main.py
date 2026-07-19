@@ -13,9 +13,10 @@ def menu():
     print("1. Add Task")
     print("2. View Tasks")
     print("3. Update Status")
-    print("4. Delete Task")
-    print("5. Task Statistics")
-    print("6. Exit")
+    print("4. Rename Task")
+    print("5. Delete Task")
+    print("6. Task Statistics")
+    print("7. Exit")
 
 
 def create_task(name):
@@ -87,6 +88,12 @@ def display_statistics(task_list):
     print(f"Completion Rate  : {completion_rate:.1f}%")
 
 
+def rename_task(task_list, task_number, new_name):
+
+    task_list[task_number - 1]["Name"] = new_name
+
+    print("Task renamed successfully.")
+
 # ---------------- Main Program ----------------
 
 user_name = input("Enter your name: ")
@@ -152,8 +159,33 @@ while True:
             print("Invalid status.")
             continue
 
-    # Delete Task
+    
+
+    # Rename Task
     elif choice == "4":
+
+        if not display_tasks(tasks):
+            continue
+
+        print()
+
+        task_number = int(input("Which task do you want to rename?: "))
+
+        new_name = input("Enter new task name: ")
+
+        if task_exists(tasks, new_name):
+            print("Task already exists.")
+            continue
+
+        rename_task(tasks, task_number, new_name)
+
+        print("\nUpdated Tasks:\n")
+
+        display_tasks(tasks)
+
+
+    # Delete Task
+    elif choice == "5":
 
         if not display_tasks(tasks):
             continue
@@ -171,12 +203,12 @@ while True:
         display_tasks(tasks)       
 
     # Task Statistics and Exit
-    elif choice == "5":
+    elif choice == "6":
 
         display_statistics(tasks)
 
     # Exit
-    elif choice == "6":
+    elif choice == "7":
 
         print("Goodbye!")
         break
