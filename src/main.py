@@ -16,7 +16,8 @@ def menu():
     print("4. Rename Task")
     print("5. Delete Task")
     print("6. Task Statistics")
-    print("7. Exit")
+    print("7. Search Task")
+    print("8. Exit")
 
 
 def create_task(name):
@@ -93,6 +94,20 @@ def rename_task(task_list, task_number, new_name):
     task_list[task_number - 1]["Name"] = new_name
 
     print("Task renamed successfully.")
+
+
+def search_task(task_list, keyword):
+
+    found = False
+
+    for index, task in enumerate(task_list, start=1):
+
+        if keyword.lower() in task["Name"].lower():
+            display_task(index, task)
+            found = True
+
+    if not found:
+        print("No matching task found.")
 
 # ---------------- Main Program ----------------
 
@@ -207,11 +222,28 @@ while True:
 
         display_statistics(tasks)
 
-    # Exit
+
+    # Search Task
     elif choice == "7":
+
+        if not tasks:
+            print("No Task Added Yet")
+            continue
+
+        keyword = input("Search task: ")
+
+        print()
+
+        search_task(tasks, keyword)
+
+
+    # Exit
+    elif choice == "8":
 
         print("Goodbye!")
         break
+
+    
 
     
 
