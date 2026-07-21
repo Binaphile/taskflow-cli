@@ -177,6 +177,8 @@ while True:
             print("Invalid status.")
             continue
 
+        print(f"\nTask '{selected_task['Name']}' marked as {selected_task['Status']}.")
+
     
 
     # Rename Task
