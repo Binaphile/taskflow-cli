@@ -132,12 +132,15 @@ while True:
 
         task_name = input("What task?: ")
 
-        if task_exists(tasks, task_name):
+        if not task_name.strip():
+            print("Task name cannot be empty.")
+
+        elif task_exists(tasks, task_name):
             print("Task already exists.")
 
         else:
             task = create_task(task_name)
-            add_task(tasks, task)  
+            add_task(tasks, task)
      
 
     # View Tasks
