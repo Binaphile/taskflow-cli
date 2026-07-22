@@ -218,6 +218,12 @@ while True:
 
         task_number = int(input("Which task do you want to delete?: "))
 
+        confirm = input("Are you sure? (y/n): ").lower()
+
+        if confirm != "y":
+            print("Delete cancelled.")
+            continue
+
         deleted_task = tasks.pop(task_number - 1)
 
         print(f"\nDeleted Task: {deleted_task['Name']}")
