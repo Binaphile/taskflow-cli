@@ -193,6 +193,10 @@ while True:
 
         new_name = input("Enter new task name: ")
 
+        if not new_name.strip():
+            print("Task name cannot be empty.")
+            continue
+
         if task_exists(tasks, new_name):
             print("Task already exists.")
             continue
