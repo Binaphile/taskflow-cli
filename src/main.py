@@ -17,7 +17,8 @@ def menu():
     print("5. Delete Task")
     print("6. Task Statistics")
     print("7. Search Task")
-    print("8. Exit")
+    print("8. Sort Tasks")
+    print("9. Exit")
 
 
 def create_task(name):
@@ -108,6 +109,12 @@ def search_task(task_list, keyword):
 
     if not found:
         print("No matching task found.")
+
+def sort_tasks(task_list):
+
+    task_list.sort(key=lambda task: task["Name"].lower())
+
+    print("Tasks sorted alphabetically.")
 
 # ---------------- Main Program ----------------
 
@@ -256,8 +263,23 @@ while True:
         search_task(tasks, keyword)
 
 
-    # Exit
+    # Sort Tasks
     elif choice == "8":
+
+        if not display_tasks(tasks):
+            continue
+
+        print()
+
+        sort_tasks(tasks)
+
+        print("\nUpdated Tasks:\n")
+
+        display_tasks(tasks)
+
+
+    # Exit
+    elif choice == "9":
 
         print("Goodbye!")
         break
