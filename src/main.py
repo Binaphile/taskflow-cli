@@ -197,6 +197,10 @@ while True:
             print("Task name cannot be empty.")
             continue
 
+        if new_name.lower() == tasks[task_number - 1]["Name"].lower():
+            print("New task name must be different.")
+            continue
+
         if task_exists(tasks, new_name):
             print("Task already exists.")
             continue
