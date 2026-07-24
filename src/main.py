@@ -46,10 +46,19 @@ def display_tasks(task_list):
 
     print()
 
+    completed = 0
+
     for index, task in enumerate(task_list, start=1):
         display_task(index, task)
 
-    print(f"\nTotal Tasks: {len(task_list)}")
+        if task["Status"] == "Done":
+            completed += 1
+
+    pending = len(task_list) - completed
+
+    print(f"\nTotal Tasks : {len(task_list)}")
+    print(f"Completed  : {completed}")
+    print(f"Pending    : {pending}")
 
     return True
 
